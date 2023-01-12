@@ -2,7 +2,7 @@ from flask import Flask, redirect, url_for, request, render_template
 
 app = Flask(__name__)
 
-@app.route('/entrar')
+@app.route('/entrar/')
 def admin_index():
   return render_template('login.html')
 
@@ -10,7 +10,7 @@ def admin_index():
 def login():
   if request.method == 'POST':
     usuario = request.form['c_usuario']
-    senha = request.form['c_usuario']
+    senha = request.form['c_senha']
     if usuario == "paula" and senha == 456:
       return redirect(url_for('admin', nome=usuario, senha=senha))
     else:
@@ -29,4 +29,5 @@ if __name__=='__main__':
 
 @app.route('/admin/<nome>/<senha>')
 def admin(nome, senha):
-  frase = "<b>bem vindo</b>" + nome + "sua senha é": + senha + return frase
+  frase = "<b>bem vindo</b>" + nome + "sua senha é:" + senha
+    return frase
